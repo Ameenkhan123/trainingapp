@@ -1,0 +1,82 @@
+		<div class="col-md-10">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h1>student details</h1>
+				</div>
+			</div>
+			<div class="well">
+				<table>
+
+					<strong> profile_pic:</strong>
+					<%= @student.profile_pic %>
+					<br>
+					<br>
+					<strong> first_name:</strong>
+					<%= @student.first_name %>
+					<br>
+					<br>
+					<strong> last_name:</strong>
+					<%= @student.last_name %>
+					<br>
+					<br>
+					<strong> father_name:</strong>
+					<%= @student.father_name %>
+					<br>
+					<br>
+					<strong> contact:</strong>
+					<%= @student.contact %>
+					<br>
+					<br>
+					<strong> emergency_contact:</strong>
+					<%= @student.emergency_contact %>
+					<br>
+					<br>
+					<strong> email:</strong>
+					<%= @student.email %>
+					<br>
+					<br>
+					<strong> address:</strong>
+					<%= @student.address %>
+					<br>
+					<br>
+					<strong> college:</strong>
+					<%= @student.college %>
+					<br>
+					<br>
+					<strong> date_of_birth:</strong>
+					<%= @student.date_of_birth %>
+					<br>
+					<br>
+					<strong> gender:</strong>
+					<%= @student.gender %>
+					
+					<br>
+					<br>
+					<%= link_to 'Back', students_path, :class => 'btn btn-info ' %>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-2"> 
+
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN1Y9tstSw1JLgZUHbdL5qL6mRJiY8brw&libraries=places&callback=initMap"
+			async defer></script>
+
+
+
+
+			<div id="map" style="width:400px;height:386px;background:yellow;float:left"></div>
+
+			<script>
+				function myMap() {
+					var mapOptions = {
+						center: new google.maps.LatLng(51.5, -0.12),
+						zoom: 8,
+						mapTypeId: google.maps.MapTypeId.HYBRID
+					}
+					var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+				}
+			</script>
+
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN1Y9tstSw1JLgZUHbdL5qL6mRJiY8brw&callback=myMap"></script>
+		</div>

@@ -1,0 +1,62 @@
+	
+	<div class="col-md-10">
+<div class="panel panel-primary">
+            <div class="panel-heading">
+            <h1>Course details</h1>
+            </div>
+            </div>
+	<div class="well">
+
+		<strong> Name:</strong>
+		<%= @course.name %>
+		<br>
+		<br>
+
+		<strong> description:</strong>
+		<%= @course.try(:description).try(:html_safe)%>
+		<br>
+		<br>
+		<strong> duration:</strong>
+		<%= @course.duration %>
+		<br>
+		<br>
+		<strong> fees:</strong>
+
+		<%= @course.fees %>
+		<br>
+		<br>
+		<strong> banner_image:</strong>
+		<%= image_tag @course.banner_image %>
+
+		<br>
+
+		<br>
+		<%= link_to 'Back', courses_path, :class => 'btn btn-info '  %>
+	</div>
+
+</div>
+
+
+  <div class="col-md-2"> 
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN1Y9tstSw1JLgZUHbdL5qL6mRJiY8brw&libraries=places&callback=initMap"
+        async defer></script>
+
+
+
+
+<div id="map" style="width:400px;height:386px;background:yellow;float:left"></div>
+
+<script>
+function myMap() {
+var mapOptions = {
+    center: new google.maps.LatLng(51.5, -0.12),
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN1Y9tstSw1JLgZUHbdL5qL6mRJiY8brw&callback=myMap"></script>
+</div>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Trainingapp" %></title>
+    <%= csrf_meta_tags %>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <%#= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->
+    <%#= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <%#= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <%#= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%#= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+    <%#= javascript_include_tag "application" %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body >
+
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Trainingapp</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+         <!--    <li><%= link_to "Link1", "/path1"  %></li>
+            <li><%= link_to "Link2", "/path2"  %></li>
+            <li><%= link_to "Link3", "/path3"  %></li> -->
+            
+            <li><%= link_to "Contact", '', 'data-toggle' =>'modal', 'data-target' =>'#myModal' %></li>
+         <% if user_signed_in? %>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <% else current_user %>
+
+                  <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Setting<span class="caret">
+                    
+                  </span>
+                  </a>
+                <ul class="dropdown-menu">
+                 <div class="panel panel-body">
+                  <li><%= link_to "Login", new_user_session_path, :class => 'btn btn-success btn-block', :style => "text-align: center;" %></li>
+                  <br>
+                   <li><%= link_to "sing up", new_user_registration_path, :class => 'btn btn-primary btn-block', :style => "text-align: center;" %></li>
+                   </div>
+                </ul>
+              </li>
+
+            <% end %>
+          </ul>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+       <div class="col-md-9">
+        
+          <%= bootstrap_flash %>
+          <%= yield %>
+      
+        </div>
+        </div>
+        </div><!--/span-->
+      </div><!--/row-->
+      <br>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="panel panel-success">
+          <div class="panel-heading" style="text-align: center; font-size: 50px"%>
+          Contact Form
+          </div>
+          <div class="panel panel-body">
+            <form action="/home/create_contact" method="post">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="contact[name]" placeholder="Enter name" >
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="contact[email]">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Messages:</label>
+                <textarea class="form-control" name="contact[messages]"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-success btn btn-block"  >Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+ <div class="container">
+      <footer>
+        <p>&copy; Company 2017</p>
+      </footer>
+</div>
+    </div> <!-- /container -->
+
+  </body>
+</html>

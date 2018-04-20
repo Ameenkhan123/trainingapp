@@ -1,0 +1,74 @@
+ <div class="panel panel-info">
+    <div class="panel-heading" >
+
+    </div>
+    <div class="panel-body">
+    <div class="well">
+     <%= form_for @article, local: true do |form| %>
+
+          <% if @article.errors.any? %>
+
+   
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@article.errors.count, "error") %> prohibited
+         this article from being saved:
+      </h2>                                       
+      <ul>
+       <% @article.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+       <% end %>
+    </ul>
+ </div>
+   
+
+ <% end %>
+ <table>
+<div class="form-group">
+     <p>
+      <%=form.label :title, :class => 'control-label col-lg-2' %><br>
+      <%= form.text_field :title, :class => 'form-control' %>
+   </p>
+
+   <p>
+    <%= form.label :description, :class => 'control-label' %><br>
+    <%= form.text_area :description, class: "ckeditor form-control" %>
+    <%=form.error_span(:description) %>
+ </p>
+ <p>
+    <%= form.label :is_published?, :class => 'control-label col-lg-2' %><br>
+    <%= form.text_field :is_published?, :class => 'form-control' %>
+
+ </p>
+ <p>
+  <%= form.label :user_id, :class => 'control-label col-lg-2' %><br>
+  <%= form.text_field :user_id, :class => 'form-control' %>
+</p>
+<p>
+   <div class="col-md-5" style="margin-left: 25%">
+     <%= form.submit 'submit', :class => 'btn btn-success btn btn-block'  %>
+  </div>
+</p>
+<br>
+<br>
+<div class="col-md-5" style="margin-left: %">
+ <%= link_to 'Back', articles_path, :class => 'btn btn-info ' %>
+</div>
+
+</div>
+
+</table>
+</table>
+
+<% end %>
+
+</div>
+</div>
+
+<script >
+  $(document).ready(function(){
+    $("ckeditor").ckeditor({
+
+    });
+  });
+</script>

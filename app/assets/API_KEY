@@ -1,0 +1,26 @@
+API key
+/
+
+AIzaSyAN1Y9tstSw1JLgZUHbdL5qL6mRJiY8brw
+
+\
+
+
+
+
+
+
+
+
+/
+this script for bootstrap in drawing maps
+\
+
+
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=drawing">
+
+</script>
+
+var drawingManager = new google.maps.drawing.DrawingManager();
+drawingManager.setMap(map);

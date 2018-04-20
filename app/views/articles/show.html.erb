@@ -1,0 +1,35 @@
+	
+
+<div class="panel panel-primary">
+            <div class="panel-heading">
+            <h1>article details</h1>
+            </div>
+            </div>
+	<div class="well">
+
+		<strong> title:</strong>
+		<%= @article.title %>
+		<br>
+		<br>
+
+		<strong> description:</strong>
+		<%= @article.description %>
+		<br>
+		<br>
+		<strong> is_published?:</strong>
+		<%= @article.is_published? %>
+		<br>
+		<br>
+		<strong> user_id:</strong>
+
+		<%= @article.user_id %>
+		<br>
+		<br>
+		
+		<%= link_to 'Back', articles_path, :class => 'btn btn-info '  %>
+	</div>
+
+
+
+
+ 

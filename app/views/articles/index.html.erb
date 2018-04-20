@@ -1,0 +1,49 @@
+   <%= form_tag(articles_path, method: :get) do %>
+  <%= text_field_tag :name %>
+  <%= submit_tag 'Search', :class => 'btn btn-info ' %>
+<% end %>
+
+
+<i>
+<h1>Listing Articles</h1>
+
+
+  <table class="table table-hover">
+    <thead>
+      <ul>
+        <tr>
+          <th>title:</th>
+          <th>description:</th>
+           <th>is_published?:</th>
+          <th>user_id:</th>
+        
+         
+         
+        </tr>
+      </thead>
+
+  <%# byebug %>
+  <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.try(:description).try(:html_safe) %></td>
+        <td><%= article.is_published? %></td>
+        <td><%= article.user_id %></td>
+       
+
+        <td><%= link_to 'Show', article_path(article), :class => 'btn btn-success ' %></td>
+
+      <td><%= link_to 'Edit', edit_article_path(article), :class => 'btn btn-info ' %></td>
+
+      <td><%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'are you sure'}, :class => 'btn btn-danger ' %>
+   </td>
+  
+      </tr>
+    </ul>
+    <% end %>
+  </thead>
+</table>
+ <td><%= link_to 'New course', new_article_path, :class => 'btn btn-primary '%></td>
+ </i>

@@ -1,0 +1,81 @@
+ <div class="panel panel-info">
+    <div class="panel-heading" >
+
+    </div>
+    <div class="panel-body">
+    <div class="well">
+     <%= form_for @course, local: true do |form| %>
+
+          <% if @course.errors.any? %>
+
+   
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@course.errors.count, "error") %> prohibited
+         this course from being saved:
+      </h2>                                       
+      <ul>
+       <% @course.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+       <% end %>
+    </ul>
+ </div>
+   
+
+ <% end %>
+ <table>
+<div class="form-group">
+     <p>
+      <%=form.label :name, :class => 'control-label col-lg-2' %><br>
+      <%= form.text_field :name, :class => 'form-control' %>
+   </p>
+
+   <p>
+    <%= form.label :description, :class => 'control-label' %><br>
+    <%= form.text_area :description, class: "ckeditor form-control" %>
+    <%=form.error_span(:description) %>
+ </p>
+ <p>
+    <%= form.label :duration, :class => 'control-label col-lg-2' %><br>
+    <%= form.text_field :duration, :class => 'form-control' %>
+
+ </p>
+ <p>
+  <%= form.label :fees, :class => 'control-label col-lg-2' %><br>
+  <%= form.text_field :fees, :class => 'form-control' %>
+</p>
+<p>
+  <%= form.label :banner_image, :class => 'control-label col-lg-2' %>
+  <%= form.file_field :banner_image, :class => "form-control" %>
+
+</p>
+
+ <%= select_tag :student_ids, options_from_collection_for_select(Student.all, :id, :name, selected: form.object.students.pluck(:id)), {:multiple => true, size: 4}%>
+<p>
+   <div class="col-md-5" style="margin-left: 25%">
+     <%= form.submit 'submit', :class => 'btn btn-success btn btn-block'  %>
+  </div>
+</p>
+<br>
+<br>
+<div class="col-md-5" style="margin-left: %">
+ <%= link_to 'Back', courses_path, :class => 'btn btn-info ' %>
+</div>
+
+</div>
+
+</table>
+</table>
+
+<% end %>
+
+</div>
+</div>
+
+<script >
+  $(document).ready(function(){
+    $("ckeditor").ckeditor({
+
+    });
+  });
+</script>

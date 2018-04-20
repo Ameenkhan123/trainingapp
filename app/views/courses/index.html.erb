@@ -1,0 +1,49 @@
+   <%= form_tag(courses_path, method: :get) do %>
+  <%= text_field_tag :name %>
+  <%= submit_tag 'Search', :class => 'btn btn-info ' %>
+<% end %>
+
+
+<i>
+<h1>Listing Courses</h1>
+
+
+  <table class="table table-hover">
+    <thead>
+      <ul>
+        <tr>
+          <th>name:</th>
+          <th>description:</th>
+           <th>duration:</th>
+          <th>fees:</th>
+          <th>banner_image:</th>
+         
+         
+        </tr>
+      </thead>
+
+  <%# byebug %>
+  <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.try(:description).try(:html_safe) %></td>
+        <td><%= course.duration %></td>
+        <td><%= course.fees %></td>
+        <td><%=  image_tag course.banner_image, class: "img-responsive" %></td>
+       
+
+        <td><%= link_to 'Show', course_path(course, corces_status: 'show'), :class => 'btn btn-success ' %></td>
+
+      <td><%= link_to 'Edit', edit_course_path(course), :class => 'btn btn-info ' %></td>
+
+      <td><%= link_to 'Destroy', course_path(course),
+              method: :delete,
+              data: { confirm: 'are you sure'}, :class => 'btn btn-danger ' %>
+   </td>
+      </tr>
+    </ul>
+    <% end %>
+  </thead>
+</table>
+ <td><%= link_to 'New course', new_course_path, :class => 'btn btn-primary '%></td>
+ </i>

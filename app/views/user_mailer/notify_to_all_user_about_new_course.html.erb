@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @user.email %></h1>
+    <p>
+      We have launched a new course. <%= @course.name %>.<br>
+    </p>
+
+  <strong> banner_image:</strong>
+    <%= image_tag @course.banner_image %>
+    <p>
+      To have a look, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
