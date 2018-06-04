@@ -98,8 +98,8 @@ config.action_mailer.default_url_options = {  :host => 'localhost:3000',
 config.action_mailer.perform_deliveries = true
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-    :user_name => 'ameenkhana4@gmail.com',
-    :password => '001992124',
+    :user_name => 'your email',
+    :password => 'your password',
     :domain => 'gmail.com',
     :address => 'smtp.gmail.com',
     :port => 587,
